@@ -1,7 +1,7 @@
 const express = require('express');
-const { createUser, handleLogin, getUser }  = require('../controllers/userControler')
+const { createUser, handleLogin, getUser, getAcount }  = require('../controllers/userControler')
 const auth = require('../middleware/auth')
-
+const delay = require('../middleware/delay')
 const routerAPI = express.Router();
 
 //routerAPI.get("*", delay) // only methods GET
@@ -16,6 +16,8 @@ routerAPI.post('/register', createUser)
 routerAPI.post('/login', handleLogin)
 
 routerAPI.get('/user', getUser)
+
+routerAPI.get('/account', delay, getAcount)
 
 
 module.exports = routerAPI; //export default
